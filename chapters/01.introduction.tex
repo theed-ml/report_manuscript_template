@@ -1,0 +1,51 @@
+%!TEX root = ../report.tex
+%!TeX encoding = UTF-8
+%!TeX spellcheck = en_US
+
+\chapter{Introduction}\label{ch:introduction}
+
+A good \textbf{introduction} should tell the reader what the project is about (\ie{} its purpose) without assuming any special knowledge and without introducing any specific material that might obscure his/her understanding. It should anticipate and combine the main points described in more detail in the rest of the document. It should also enthuse the readers about the project, to encourage them to read the whole report. Normally, an introduction comprises:
+
+\begin{itemize}
+	\item the goals of the project
+	\item the intended audience or users of the work
+	\item the scope of the project
+	\item the strategy employed to carry out the project
+	\item the assumptions on which the work relies on
+	\item a summary of the important outcomes
+\end{itemize}
+
+\section{\LaTeX{} QuickStart}
+
+\subsection{Defining a table}
+
+\Cref{tb:example} shows a toy example.
+
+\begin{table}
+  \centering 
+  \caption{Defining a table in \LaTeX{}}\label{tb:example} 
+  \begin{tabular}{rl}    
+	\toprule
+	\textbf{Column 1} & \textbf{Column 2} \\ 
+	\midrule
+	   A & 42\\
+	   B & 7\\
+	   C & 707\\
+	\bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection{Including a figure}
+
+\Cref{fig:example} shows seed production as a function of the biomass in waterlilies from Great Works Pond in Northern Maine in August 2011.
+
+\insertfigure{figures/example}{.7\textwidth}{Seed production as a function of the biomass in waterlilies from Great Works Pond in Northern Maine in August 2011}{fig:example}
+
+\subsection{Citing a reference}
+
+We use 
+\begin{verbatim}
+  \cite{russell:19}
+\end{verbatim} 
+
+to cite a paper. For example, in~\cite{russell:19} the authors show \(\ldots{}\) The references must be included in the file \emph{references.bib}

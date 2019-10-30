@@ -1,0 +1,207 @@
+\documentclass[english,11pt,a4paper]{report}
+\renewcommand{\familydefault}{\sfdefault}
+\parindent0pt  \parskip10pt      % make block paragraphs
+
+\usepackage{graphicx}
+\graphicspath{%
+  {./figures/}%
+}
+\DeclareGraphicsExtensions{.pdf,.jpeg,.png,.jpg}
+
+\usepackage{color}
+\usepackage[numbers]{natbib}
+\usepackage[sc]{mathpazo}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{booktabs,colortbl,xcolor}
+\usepackage{rotating}
+\usepackage{url}
+\usepackage{setspace} 
+\usepackage{tikz}\usetikzlibrary{calc}
+\usepackage{rotating}
+\usepackage[section]{placeins}
+\usepackage{paralist}
+\usepackage{nameref}
+\usepackage{etoolbox}
+\usepackage{microtype}
+\usepackage{subfigure}
+\usepackage{ifthen}
+\usepackage{multicol}
+\usepackage[printwatermark]{xwatermark}
+\usepackage{listings}
+
+\usepackage{alltt}
+\usepackage[unicode=true,pdfusetitle,bookmarks=true,bookmarksnumbered=true,
+ bookmarksopen=true,bookmarksopenlevel=2,breaklinks=false,pdfborder={0 0 1},
+ backref=false,colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{lipsum}
+\usepackage{caption}
+\captionsetup[table]{skip=5pt,labelfont=bf}
+\captionsetup[figure]{labelfont=bf}
+
+
+\usepackage{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=2.8cm,rmargin=2.8cm,includeheadfoot,headheight=14pt}
+
+\usepackage{fancyhdr}
+% \pagestyle{fancy}
+\lhead[\slshape \rightmark]{}
+% ------------------------------- %
+\usepackage{blindtext}
+\usepackage{framed}
+\usepackage{verbatim}
+\usepackage{amssymb}
+\usepackage{pifont}
+
+% ------------------------------- %
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+
+\usepackage{pdflscape}
+\usepackage{soul}
+
+% \usepackage[acronym,nonumberlist,toc]{glossaries}
+\usepackage[nomain,acronym,nonumberlist,toc]{glossaries}
+
+\usepackage{atbegshi}
+\newcounter{TotPages}
+
+\usepackage[capitalise]{cleveref}% it must be the last one to be declared
+
+\newcommand{\chapterformat}{\Huge\bfseries}
+\newcommand{\chapteralign}{}
+
+% avoid line breaks in footnotes
+\clubpenalty=9999
+\widowpenalty=9999
+\interfootnotelinepenalty=5000
+\raggedbottom
+
+\makeatletter
+
+\providecommand{\tabularnewline}{\\}
+\newcommand\subtitle[1]{{#1}}
+\newcommand{\HRule}[1]{\hfill \rule{0.2\linewidth}{#1}}
+\newcommand\HHRule{\rule{\textwidth}{1pt}}
+\newcommand{\ie}{i.e.,}
+\newcommand{\eg}{e.g.,}
+\newcommand\hurl[1]{\href{https://#1}{\emph{#1}}}
+\newcommand{\heading}[1]{\multicolumn{1}{c}{#1}}
+\newcommand{\headingbf}[1]{\heading{\textbf{#1}}}
+
+
+\renewcommand*{\acronymname}{List of Abbreviations}
+\renewcommand*{\glspostdescription}{}% remove trailing dot
+\renewcommand{\glsnamefont}[1]{\textbf{#1}}
+
+\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;}
+\newcommand{\xmark}{\ding{55}}%
+
+%%
+\newglossarystyle{clong}{%
+ \renewenvironment{theglossary}%
+     {\begin{longtable}{lp{12cm}p{\glsdescwidth}}}%
+     {\end{longtable}}%
+    \renewcommand*{\glossaryheader}{}%
+    \renewcommand*{\glsgroupheading}[1]{}%
+    \renewcommand*{\glossaryentryfield}[5]{%
+        \glsentryitem{##1}\glstarget{##1}{##2} & ##3 & ##5\\}%
+        \renewcommand*{\glossarysubentryfield}[6]{%
+        &
+        \glssubentryitem{##2}%
+        \glstarget{##2}{\strut}##4 & ##6\\}%
+        %\renewcommand*{\glsgroupskip}{ & &\\}%
+      \renewcommand{\glsgroupskip}{}%
+}%
+
+\renewcommand*{\glstextformat}[1]{\textcolor{black}{#1}}
+
+
+% options: figure file, width, caption, and label
+\newcommand\insertfigure[4]{{%
+  \begin{figure}
+    \centering
+    \includegraphics[width=#2]{#1}    
+    \caption{#3}\label{#4}
+  \end{figure}
+}}
+
+
+\makeglossaries{}
+\loadglsentries{abbreviations}
+
+\renewcommand*{\maketitle}{%
+  \thispagestyle{empty}% 
+
+  \thispagestyle{empty}
+  \begin{figure}
+    \vspace{-1cm}
+    \centering
+    \includegraphics[width=0.3\textwidth]{figures/logo}\\[1cm]
+  \end{figure}
+
+  \vfill
+  \begin{center}
+     \scshape\centering\onehalfspacing\fontsize{4mm}{6mm}\selectfont ESME-Sudria Engineering School\\[1cm]
+  \end{center}
+  \vfill
+  \begin{center}
+     \Huge\bfseries\scshape \@title{}     
+  \end{center}
+
+\vfill
+  \begin{minipage}{0.45\textwidth} 
+      \begin{flushleft} \footnotesize
+        \emph{Authors:}\   \\[0.4cm]
+        \@author{}              
+      \end{flushleft} 
+    \end{minipage}
+\vfill    
+  \begin{center}
+  \vfill
+  {\sc \the\year}
+  \end{center}
+
+  \pagenumbering{roman}\phantomsection{}
+  \tableofcontents
+  \addcontentsline{toc}{chapter}{List of Figures}
+  \listoffigures
+  \addcontentsline{toc}{chapter}{List of Tables}
+  \listoftables  
+  \printglossary[type=acronym,title={List of Abbreviations},toctitle={List of Abbreviations}]
+  \clearpage{}
+}%
+
+\makeatother
+
+\title{\LaTeX Project Template}
+
+\author%
+{%
+  John~\textsc{Joy}\\
+  Homer~\textsc{Simpson}%
+}
+
+\begin{document}
+
+\maketitle
+
+\include{abstract}
+
+\pagenumbering{arabic}
+
+\include{chapters/01.introduction}
+\include{chapters/02.background}
+\include{chapters/03.proposed-approach}
+\include{chapters/04.specification-design}
+\include{chapters/05.implementation}
+\include{chapters/06.results}
+\include{chapters/07.conclusions}
+
+\bibliographystyle{IEEEtranN}  
+\bibliography{references}
+\end{document}
